@@ -122,7 +122,7 @@ poetry run extra/libvirt_installer.sh
 ## Step 7: Configure & Verify CAPEv2 Services
 > ⚠️ **Important: Restart and Check** to make sure all services are running without missing dependencies or error in `journalctl` logs.
 
-Follow [cuckoo.conf.default](CAPEv2/conf/default/cuckoo.conf.default) and modify as necessary
+Follow [cuckoo.conf](CAPEv2/conf/cuckoo.conf) and modify as necessary
 
 ```bash
 # Edit cuckoo configuration file
