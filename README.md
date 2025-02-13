@@ -8,7 +8,9 @@ Ensure you are using `Ubuntu 22.04 Live Server`, which can be downloaded from:
 
 > ⚠️ **Important:** Running all these commands as `cape` user is recommended. Best is to create `cape` user during OS installation.
 
-- CPU Total Processor Cores: 4 (Number of Processors Recommended - 2, Number of Cores per Processor Recommended - 2)
+- CPU Total Processor Cores: 4 
+  - Number of Processors Recommended: 2
+  - Number of Cores per Processor Recommended - 2
 - CPU with Virtualization Support (VT-x/AMD-V)
 - Memory: 8GB RAM (16GB - 32GB Recommended)
 - Hard Disk: 200GB
