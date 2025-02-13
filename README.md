@@ -82,6 +82,7 @@ docker compose up --build -d
 
 - Download `Windows 10 21H2` ISO into `/opt/iso` directory.
 - Access Docker-Virt-Manager Web UI `http://<Ubuntu_22.04_IP_Addr>:8185`
+- Create VM name `cuckoo1` with `Windows 10 21H2` ISO and start the VM.
 
 ## Step 5: Install CAPEv2
 ```bash
