@@ -3,7 +3,7 @@
 This guide provides a step-by-step process for setting up [CAPEv2](https://github.com/kevoreilly/CAPEv2) with [Docker-Virt-Manager](https://github.com/m-bers/docker-virt-manager) on **Ubuntu 22.04**.
 
 ## Prerequisites
-Ensure you are using Ubuntu 22.04, which can be downloaded from:
+Ensure you are using `Ubuntu 22.04 Live Server`, which can be downloaded from:
 [Ubuntu 22.04 Old Releases](https://old-releases.ubuntu.com/releases/22.04.1/).
 
 > ⚠️ **Important:** Running all these commands as `cape` user is recommended. Best is to create `cape` user during OS installation.
@@ -71,7 +71,7 @@ sudo mkdir -p /opt/iso
 sudo chmod 777 /opt/iso
 ```
 
-### Follow [docker-compose.yml](docker-virt-manager/docker-compose.yml) and modify as necessary
+Follow [docker-compose.yml](docker-virt-manager/docker-compose.yml) and modify as necessary
 
 ```bash
 docker build -t docker-virt-manager . && docker compose up -d
@@ -80,6 +80,9 @@ docker build -t docker-virt-manager . && docker compose up -d
 docker compose up --build -d
 ```
 
+- Download `Windows 10 21H2` ISO into `/opt/iso` directory.
+- Access Docker-Virt-Manager Web UI `http://<Ubuntu_22.04_IP_Addr>:8185`
+
 ## Step 5: Install CAPEv2
 ```bash
 cd /opt
@@ -87,7 +90,7 @@ sudo git clone https://github.com/kevoreilly/CAPEv2.git
 cd CAPEv2
 ```
 
-### Follow [cape2.sh](CAPEv2/installer/cape2.sh) and modify as necessary. 
+Follow [cape2.sh](CAPEv2/installer/cape2.sh) and modify as necessary. 
 > ⚠️ **Important:** Check OS Network Interface, do not blindly follow!
 ```plaintext
 # Configuration
@@ -118,10 +121,20 @@ poetry run extra/libvirt_installer.sh
 
 ## Step 7: Configure & Verify CAPEv2 Services
 > ⚠️ **Important: Restart and Check** to make sure all services are running without missing dependencies or error in `journalctl` logs.
+
+Follow [cuckoo.conf.default](CAPEv2/conf/default/cuckoo.conf.default) and modify as necessary
+
 ```bash
 # Edit cuckoo configuration file
 sudo nano /opt/CAPEv2/conf/cuckoo.conf
+```
 
+```plaintext
+[resultserver]
+ip = 192.168.122.1 # Change to virbr0 IP
+```
+
+```bash
 # Start CAPEv2
 poetry run python3 cuckoo.py
 
