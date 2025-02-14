@@ -10,7 +10,7 @@ Ensure you are using `Ubuntu 22.04 Live Server`, which can be downloaded from:
 
 - CPU Total Processor Cores: 4 
   - Number of Processors Recommended: 2
-  - Number of Cores per Processor Recommended - 2
+  - Number of Cores per Processor Recommended: 2
 - CPU with Virtualization Support (VT-x/AMD-V)
 - Memory: 8GB RAM (16GB - 32GB Recommended)
 - Hard Disk: 200GB
@@ -39,7 +39,7 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 ## Step 2: Install KVM and Virtualization Dependencies
 ```bash
-sudo apt update
+# Install necessary dependencies
 sudo apt install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils virtinst uidmap libvirt-dev libguestfs-tools
 
 # Enable and check libvirtd service
@@ -58,6 +58,7 @@ sudo kvm-ok
 
 ## Step 3: Configure Virtualization Directories
 ```bash
+# Create necessary directories and set permissions
 sudo mkdir -p /var/lib/libvirt/images
 sudo chown -R libvirt-qemu:kvm /var/lib/libvirt
 sudo chmod -R 775 /var/lib/libvirt
@@ -69,6 +70,7 @@ sudo systemctl restart libvirtd
 
 ## Step 4: Install and Configure Docker-Virt-Manager
 ```bash
+# Clone Docker-Virt-Manager repository
 cd /opt
 sudo git clone https://github.com/m-bers/docker-virt-manager.git
 cd docker-virt-manager
@@ -81,9 +83,10 @@ sudo chmod 777 /opt/iso
 Follow [docker-compose.yml](docker-virt-manager/docker-compose.yml) and modify as necessary
 
 ```bash
+# Build and deploy Docker-Virt-Manager
 docker build -t docker-virt-manager . && docker compose up -d
 
-# Rebuild and deploy updated docker-compose.yml Docker-Virt-Manager
+# Rebuild and deploy updated Docker-Virt-Manager docker-compose.yml file
 docker compose up --build -d
 ```
 
@@ -93,6 +96,7 @@ docker compose up --build -d
 
 ## Step 5: Install CAPEv2
 ```bash
+# Clone CAPEv2 repository
 cd /opt
 sudo git clone https://github.com/kevoreilly/CAPEv2.git
 cd CAPEv2
@@ -109,6 +113,7 @@ USER="cape"
 ```
 
 ```bash
+# Run CAPEv2 installer
 sudo ./cape2.sh base cape | tee cape.log
 ```
 
@@ -138,6 +143,7 @@ sudo nano /opt/CAPEv2/conf/cuckoo.conf
 ```
 
 ```plaintext
+# Change the following values
 [resultserver]
 ip = 192.168.122.1 # Change to virbr0 IP
 ```
