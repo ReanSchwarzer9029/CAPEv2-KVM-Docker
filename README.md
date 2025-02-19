@@ -172,3 +172,9 @@ sudo journalctl -u cape-processor.service | tail -n 20
 sudo journalctl -u cape-web.service | tail -n 20
 sudo journalctl -u cape-rooter.service | tail -n 20
 ```
+
+That's it for Part 1. Refer to the following links for Part 2 and Part 3.
+
+[[Part2] Installing and Configuring CAPEv2 on Ubuntu 22.04](https://medium.com/@rizqisetyokus/building-capev2-automated-malware-analysis-sandbox-part-2-0c47e4b5cbcd)
+
+[[Part3] Installing and Configuring CAPEv2 on Ubuntu 22.04](https://medium.com/@rizqisetyokus/building-capev2-automated-malware-analysis-sandbox-part-3-d5535a0ab6f6)
